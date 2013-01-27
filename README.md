@@ -3,6 +3,8 @@
 Blank Maven skin renders the Maven site pages without any additional skinning or decoration.
 It only outputs the contents of each page.
 
+The skin uses short title as output's `<title>` tag. If one is not available, tries to derive
+it from the first `<h1>` header in the content.
 
 ## Usage
 

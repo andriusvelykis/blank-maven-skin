@@ -42,6 +42,23 @@
 #end#* /htmlContent
 
 
+// generate a short title if one does not exist
+*##if ( !$shortTitle || $shortTitle == '' )#*
+	// Generate the title.
+	// To generate the title, we take the contents of the first h1 tag in the document.
+	*##set ( $h1Text = $StringUtils.getNestedString( $bodyContent, '<h1>', '</h1>' ) )#*
+	*##if ( $h1Text )#*
+	    // remove all nested HTML tags from the header tag
+		*##set ( $shortTitle = $h1Text.replaceAll( "<[^>]*>", "" ).trim() )#*
+	*##end#*
+*##end#*
+
+// override $title with $shortTitle if available
+*##if ( $shortTitle && $shortTitle != '' )#*
+	*##set ( $title = $shortTitle )#*
+*##end#*
+
+
 --------------------------------------------------
 --------------------------------------------------
  The page HTML
