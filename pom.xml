@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
+  <groupId>lt.velykis.maven.skins</groupId>
+  <artifactId>blank-maven-skin</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <name>Blank Maven Skin</name>
+  <description>
+    A Maven skin that does not provide any skinning, just outputs the result HTML pages.
+  </description>
+
+  <url>http://github.com/andriusvelykis/blank-maven-skin</url>
+  <inceptionYear>2013</inceptionYear>
+  
+
+  <scm>
+    <connection>scm:git:git@github.com:andriusvelykis/blank-maven-skin.git</connection>
+    <developerConnection>scm:git:git@github.com:andriusvelykis/blank-maven-skin.git</developerConnection>
+    <url>http://github.com/andriusvelykis/blank-maven-skin/tree/master</url>
+    <tag>HEAD</tag>
+  </scm>
+  <issueManagement>
+    <system>GitHub</system>
+    <url>http://github.com/andriusvelykis/blank-maven-skin/issues</url>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>Andrius Velykis</name>
+    <url>http://andrius.velykis.lt</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>andriusvelykis</id>
+      <name>Andrius Velykis</name>
+      <timezone>0</timezone>
+      <url>http://andrius.velykis.lt</url>
+    </developer>
+  </developers>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources/</directory>
+      </resource>
+      <resource>
+        <!-- Filter skin template to add generator version -->
+        <directory>src/main/resources/</directory>
+        <includes>
+          <include>META-INF/maven/*</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <!-- Override resource filtering delimiters to avoid filtering Velocity variables,
+               which have the same pattern ${replace.me}. Instead, using @replace.me@. -->
+          <useDefaultDelimiters>false</useDefaultDelimiters>
+          <delimiters>
+            <delimiter>@</delimiter>
+          </delimiters>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <pushChanges>false</pushChanges>
+          <localCheckout>true</localCheckout>
+        </configuration>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.5.1</version>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <anonymousConnection>scm:git:git@github.com:andriusvelykis/blank-maven-skin.git</anonymousConnection>
+          <developerConnection>scm:git:git@github.com:andriusvelykis/blank-maven-skin.git</developerConnection>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>summary</report>
+              <report>license</report>
+              <report>modules</report>
+              <report>project-team</report>
+              <report>scm</report>
+              <report>issue-tracking</report>
+              <report>dependencies</report>
+              <report>dependency-convergence</report>
+              <report>plugins</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changes-plugin</artifactId>
+        <version>2.8</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>changes-report</report>
+              <!-- <report>github-report</report> -->
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+
+</project>
