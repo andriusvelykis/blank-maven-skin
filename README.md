@@ -4,6 +4,50 @@ Blank Maven skin renders the Maven site pages without any additional skinning or
 It only outputs the contents of each page.
 
 
+## Usage
+
+To use this Maven skin, include it in your `site.xml` file:
+
+```xml
+<project>
+  ...
+  <skin>
+    <groupId>lt.velykis.maven.skins</groupId>
+    <artifactId>blank-maven-skin</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </skin>
+  ...
+</project>
+```
+
+The skin requires Velocity >= 1.7 when generating Maven site.
+Add it as a dependency to `maven-site-plugin` in your POM file:
+
+```xml
+<build>
+  <plugins>
+    ...
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-site-plugin</artifactId>
+      <version>3.2</version>
+      <dependencies>
+        ...
+        <!-- Blank skin requires Velocity >= 1.7  -->
+        <dependency>
+          <groupId>org.apache.velocity</groupId>
+          <artifactId>velocity</artifactId>
+          <version>1.7</version>
+        </dependency>
+        ...
+      </dependencies>
+      ...
+    </plugin>
+    ...
+  </plugins>
+</build>
+```
+
 ## Bug tracker
 
 Have a bug or a feature request? Please create an issue here on GitHub that conforms with
