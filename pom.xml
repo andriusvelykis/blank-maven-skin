@@ -10,7 +10,7 @@
 
   <groupId>lt.velykis.maven.skins</groupId>
   <artifactId>blank-maven-skin</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
 
   <name>Blank Maven Skin</name>
   <description>
@@ -25,7 +25,7 @@
     <connection>scm:git:git@github.com:andriusvelykis/blank-maven-skin.git</connection>
     <developerConnection>scm:git:git@github.com:andriusvelykis/blank-maven-skin.git</developerConnection>
     <url>http://github.com/andriusvelykis/blank-maven-skin/tree/master</url>
-    <tag>blank-maven-skin-1.0.0</tag>
+    <tag>HEAD</tag>
   </scm>
   <issueManagement>
     <system>GitHub</system>
