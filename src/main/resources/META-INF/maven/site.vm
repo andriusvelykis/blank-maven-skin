@@ -81,7 +81,10 @@
 		<meta http-equiv="content-language" content="$locale.language" />
 #*	*##end#*
 
-#*	*##if ( $decoration.body.head )##
+*###
+		<link rel="stylesheet" href="$relativePath/css/site.css" />
+#*
+	*##if ( $decoration.body.head )##
 		#htmlContent ( $decoration.body.head.getChildren() )
 #*	*##end#*
 
